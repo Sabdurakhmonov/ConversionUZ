@@ -15,11 +15,11 @@ import uz.gita.conversionuz.navigation.AppNavigator
 import javax.inject.Inject
 
 @HiltViewModel
-class MenuViewModelImpl @Inject constructor(
+class CurrencyViewModelImpl @Inject constructor(
     private val repository: Repository,
-    private val appNavigation: AppNavigator,
-) : MenuViewModel,
-    ViewModel() {
+    private val appNavigator: AppNavigator
+) : CurrencyViewModel, ViewModel() {
+
     private var dataList = mutableListOf<ApiResponse.CursResponse>()
 
     private var check = false
@@ -76,7 +76,4 @@ class MenuViewModelImpl @Inject constructor(
         }
     }
 
-    override fun clickItem(id: Int) {
-
-    }
 }

@@ -23,9 +23,7 @@ class SplashViewModelImpl @Inject constructor(
 ) : SplashViewModel, ViewModel() {
     override fun nextToScreen() {
         repositoryImpl.getAll().onEach {
-            Log.d("AAA", "nextToScreen: ${it.isFailure}")
 
-            appNavigation.navigateTo(SplashScreenDirections.actionSplashScreenToMenuScreen())
         }.launchIn(viewModelScope)
     }
 

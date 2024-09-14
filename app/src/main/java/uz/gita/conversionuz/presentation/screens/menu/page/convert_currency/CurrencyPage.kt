@@ -16,8 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import uz.gita.conversionuz.R
 import uz.gita.conversionuz.databinding.PageCurrencyBinding
 import uz.gita.conversionuz.presentation.adapters.RvAdapter
@@ -26,10 +28,10 @@ import uz.gita.conversionuz.presentation.adapters.RvAdapterShimmer
 @AndroidEntryPoint
 class CurrencyPage:Fragment(R.layout.page_currency) {
     private val binding by viewBinding(PageCurrencyBinding::bind)
-    private val viewModel by viewModels<MenuViewModelImpl>()
+    private val viewModel by viewModels<CurrencyViewModelImpl>()
     private val adapter by lazy { RvAdapter()}
     private val adapterShimmer by lazy { RvAdapterShimmer() }
-
+    val itemClick = MutableSharedFlow<Int>()
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getAll()
@@ -41,7 +43,11 @@ class CurrencyPage:Fragment(R.layout.page_currency) {
 
         }.launchIn(lifecycleScope)
         binding.rvAdapter.layoutManager = LinearLayoutManager(requireContext())
-
+        adapter.setOnItemClickListener {
+            lifecycleScope.launch {
+                itemClick.emit(it)
+            }
+        }
         binding.btnSearch.setOnClickListener {
             viewModel.clickSearch()
         }

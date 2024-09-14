@@ -1,6 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_navigation"
+        android:orientation="horizontal"
+        android:layout_margin = "5dp"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:tag="1"
+            android:elevation="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingVertical="2dp"
+            app:cardCornerRadius="30dp"
+            android:id="@+id/btn_currency"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/currency"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/ic_cur"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_currency" />
+
+                <TextView
+                    android:id="@+id/tx_currency"
+                    android:textColor="#333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="currency" />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:clickable="true"
+            android:elevation="0dp"
+            android:tag="2"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingVertical="2dp"
+            android:id="@+id/btn_crypto"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/crypto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ic_cry"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_bitcoin" />
+
+                <TextView
+                    android:id="@+id/tx_crypto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:text="crypto" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:clickable="true"
+            android:elevation="0dp"
+            android:tag="3"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingVertical="2dp"
+            app:cardCornerRadius="30dp"
+            android:id="@+id/btn_liked"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/bg_nav_item"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ic_liked"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_favourite" />
+
+                <TextView
+                    android:id="@+id/tx_liked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:text="liked" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:backgroundTint="#00FFFFFF"
+            android:clickable="true"
+            android:elevation="0dp"
+            android:tag="4"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingVertical="2dp"
+            app:cardCornerRadius="30dp"
+            android:id="@+id/btn_setting"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ic_set"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_setting" />
+
+                <TextView
+                    android:id="@+id/tx_setting"
+                    android:textColor="#333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="settings" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

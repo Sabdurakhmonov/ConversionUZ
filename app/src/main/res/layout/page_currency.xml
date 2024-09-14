@@ -34,7 +34,7 @@
            <ImageView
                android:visibility="gone"
                android:id="@+id/back_btn"
-               android:background="@drawable/bg_search_ic"
+               android:background="@drawable/bg_click"
                android:focusable="true"
                android:padding="6dp"
                android:clickable="true"
@@ -64,7 +64,7 @@
 
         <ImageView
             android:id="@+id/btn_search"
-            android:background="@drawable/bg_search_ic"
+            android:background="@drawable/bg_click"
             android:focusable="true"
             android:padding="6dp"
             android:clickable="true"
@@ -85,6 +85,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
         tools:listitem="@layout/item_conversion"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
         />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -101,5 +103,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <resources>
 
     <style name="Widget.Theme.ConversionUZ.MyView" parent="">
-        <item name="android:background">@color/gray_600</item>
+        <item name="android:background">@color/primary</item>
     </style>
 </resources>

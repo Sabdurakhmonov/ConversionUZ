@@ -15,9 +15,14 @@ import okhttp3.internal.format
 import uz.gita.conversionuz.R
 import uz.gita.conversionuz.data.response.ApiResponse
 import uz.gita.conversionuz.databinding.ItemConversionBinding
+import uz.gita.conversionuz.presentation.screens.menu.page.convert_currency.CurrencyPage
 
 class RvAdapter : RecyclerView.Adapter<RvAdapter.ItemViewHolder>() {
     private var list: List<ApiResponse.CursResponse>? = null
+    private var listener:((Int)->Unit)?=null
+    fun setOnItemClickListener(block:(Int)->Unit){
+        listener = block
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun submitList(list: List<ApiResponse.CursResponse>) {
@@ -43,13 +48,17 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.ItemViewHolder>() {
                 var name = data.ccy.lowercase().substring(0,2)
                 if (name=="xd") name = "sd"
                 val url = "https://flagcdn.com/w1280/$name.png"
-                d("AAA", "bind: $url")
                 Glide
                     .with(binding.root)
                     .load(url)
                     .centerCrop()
                     .placeholder(R.drawable.img)
                     .into(binding.flag);
+            }
+        }
+        init {
+            itemView.setOnClickListener {
+                listener?.invoke(list!![adapterPosition].id)
             }
         }
     }

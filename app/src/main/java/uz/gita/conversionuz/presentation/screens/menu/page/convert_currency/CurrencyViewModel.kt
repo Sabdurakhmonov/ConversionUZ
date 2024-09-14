@@ -3,7 +3,7 @@ package uz.gita.conversionuz.presentation.screens.menu.page.convert_currency
 import kotlinx.coroutines.flow.Flow
 import uz.gita.conversionuz.data.response.ApiResponse
 
-interface MenuViewModel {
+interface CurrencyViewModel {
     fun getAll()
     val errorMessage:Flow<String>
     val data:Flow<List<ApiResponse.CursResponse>>
@@ -13,5 +13,4 @@ interface MenuViewModel {
     fun clickSearch()
     fun clickBack()
     fun search(data:String)
-    fun clickItem(id:Int)
 }
