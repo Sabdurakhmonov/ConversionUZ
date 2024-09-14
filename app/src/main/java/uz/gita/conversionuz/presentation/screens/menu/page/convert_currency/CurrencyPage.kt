@@ -1,4 +1,4 @@
-package uz.gita.conversionuz.presentation.screens.page.convert_currency
+package uz.gita.conversionuz.presentation.screens.menu.page.convert_currency
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -19,13 +19,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.conversionuz.R
-import uz.gita.conversionuz.databinding.ScreenMenuBinding
+import uz.gita.conversionuz.databinding.PageCurrencyBinding
 import uz.gita.conversionuz.presentation.adapters.RvAdapter
 import uz.gita.conversionuz.presentation.adapters.RvAdapterShimmer
 
 @AndroidEntryPoint
 class CurrencyPage:Fragment(R.layout.page_currency) {
-    private val binding by viewBinding(ScreenMenuBinding::bind)
+    private val binding by viewBinding(PageCurrencyBinding::bind)
     private val viewModel by viewModels<MenuViewModelImpl>()
     private val adapter by lazy { RvAdapter()}
     private val adapterShimmer by lazy { RvAdapterShimmer() }

@@ -20,7 +20,7 @@
         android:label="InfoScreen" />
     <fragment
         android:id="@+id/menuScreen"
-        android:name="uz.gita.conversionuz.presentation.screens.page.convert_currency.CurrencyPage"
+        android:name="uz.gita.conversionuz.presentation.screens.menu.page.convert_currency.CurrencyPage"
         android:label="MenuScreen" >
         <action
             android:id="@+id/action_menuScreen_to_infoScreen"

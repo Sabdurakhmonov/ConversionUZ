@@ -1,4 +1,4 @@
-package uz.gita.conversionuz.presentation.screens.page.convert_currency
+package uz.gita.conversionuz.presentation.screens.menu.page.convert_currency
 
 import kotlinx.coroutines.flow.Flow
 import uz.gita.conversionuz.data.response.ApiResponse
