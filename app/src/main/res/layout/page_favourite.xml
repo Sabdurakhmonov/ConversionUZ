@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_all_currency"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_all_crypto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4">
+
+        <TextView
+            android:id="@+id/tx_currency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/doppio_one"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Currency"
+            android:textColor="#0044FF"
+            android:textSize="18sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_all_crypto"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintLeft_toRightOf="@id/btn_all_currency"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4">
+
+        <TextView
+            android:id="@+id/tx_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/doppio_one"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Crypto"
+            android:textSize="18sp" />
+    </androidx.cardview.widget.CardView>
+
+
+    <View
+        android:id="@+id/selected"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@drawable/bg_tab"
+        app:layout_constraintLeft_toLeftOf="@id/btn_all_currency"
+        app:layout_constraintRight_toRightOf="@id/btn_all_currency"
+        app:layout_constraintTop_toBottomOf="@id/btn_all_currency"
+        app:layout_constraintWidth_percent="0.4"/>
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/selected"
+        android:clickable="true"
+        android:id="@+id/rv_adapter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:listitem="@layout/item_conversion"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
+        />
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="invisible"
+        android:id="@+id/lotte_anime"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/free"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <TextView
+        android:id="@+id/tx_empty"
+        app:layout_constraintTop_toBottomOf="@+id/lotte_anime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#c5c8ce"
+        android:textSize="20sp"
+        android:text="No saved items found!"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        android:fontFamily="@font/doppio_one"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        android:layout_marginEnd="24dp"
+        android:focusable="true"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialAlertDialog.Material3"
+        android:backgroundTint="@color/light_blue"
+        android:src="@drawable/ic_delete"
+        android:elevation="10dp"
+        app:tint = "#ffffff" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

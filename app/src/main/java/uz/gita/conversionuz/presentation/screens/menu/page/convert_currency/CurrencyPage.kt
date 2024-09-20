@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.inputmethodservice.InputMethodService.INPUT_METHOD_SERVICE
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -16,11 +17,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.gita.conversionuz.R
+import uz.gita.conversionuz.data.ui_data.UiData
 import uz.gita.conversionuz.databinding.PageCurrencyBinding
 import uz.gita.conversionuz.presentation.adapters.RvAdapter
 import uz.gita.conversionuz.presentation.adapters.RvAdapterShimmer
@@ -29,21 +32,27 @@ import uz.gita.conversionuz.presentation.adapters.RvAdapterShimmer
 class CurrencyPage:Fragment(R.layout.page_currency) {
     private val binding by viewBinding(PageCurrencyBinding::bind)
     private val viewModel by viewModels<CurrencyViewModelImpl>()
-    private val adapter by lazy { RvAdapter()}
-    private val adapterShimmer by lazy { RvAdapterShimmer() }
-    val itemClick = MutableSharedFlow<Int>()
+    private lateinit var adapter:RvAdapter
+    private lateinit var adapterShimmer :RvAdapterShimmer
+    val itemClick = MutableSharedFlow<UiData>()
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("AAA", "onViewCreated")
         viewModel.getAll()
+        adapter = RvAdapter()
+        adapterShimmer = RvAdapterShimmer()
         binding.rvAdapter.adapter = adapterShimmer
-        viewModel.data.onEach {
-            binding.rvAdapter.adapter = adapter
-            binding.lotteAnime.isInvisible = true
-            adapter.submitList(it)
 
+        viewModel.data.onEach {
+            if(it.isNotEmpty()){
+                binding.rvAdapter.adapter = adapter
+                binding.lotteAnime.isInvisible = true
+                adapter.submitList(it)
+            }
         }.launchIn(lifecycleScope)
+
         binding.rvAdapter.layoutManager = LinearLayoutManager(requireContext())
-        adapter.setOnItemClickListener {
+        adapter.setOnItemClickCurrency {
             lifecycleScope.launch {
                 itemClick.emit(it)
             }
@@ -55,7 +64,7 @@ class CurrencyPage:Fragment(R.layout.page_currency) {
             viewModel.clickBack()
         }
 
-        binding.backBtn.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             viewModel.clickBack()
         }
         binding.searchView.addTextChangedListener {
@@ -71,7 +80,7 @@ class CurrencyPage:Fragment(R.layout.page_currency) {
 
         viewModel.searchBack.onEach {
             closeKeyboard(requireContext(),binding.searchView)
-            binding.backBtn.isVisible = false
+            binding.btnBack.isVisible = false
             binding.searchView.isVisible = false
             binding.title.isVisible = true
             binding.btnSearch.isVisible = true
@@ -81,13 +90,24 @@ class CurrencyPage:Fragment(R.layout.page_currency) {
             binding.apply {
                 btnSearch.isVisible = false
                 searchView.isFocusable = true
-                backBtn.isVisible = true
+                btnBack.isVisible = true
                 searchView.isVisible = true
                 title.isVisible = false
                 focusEditText(requireContext(),searchView)
             }
         }.launchIn(lifecycleScope)
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        Log.d("AAA", "onResume:")
+//        viewModel.data.onEach {
+//            Log.d("AAA", "onResume: ${it.size}")
+//            binding.rvAdapter.adapter = adapter
+//            binding.lotteAnime.isInvisible = true
+//            adapter.submitList(it)
+//        }.launchIn(lifecycleScope)
+//    }
 
 
     @SuppressLint("SetTextI18n")

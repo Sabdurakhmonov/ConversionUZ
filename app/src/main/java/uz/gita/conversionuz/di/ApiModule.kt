@@ -5,7 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import uz.gita.conversionuz.domain.network.ApiCurse
+import uz.gita.conversionuz.domain.remote.network.ApiCrypto
+import uz.gita.conversionuz.domain.remote.network.ApiCurse
 import javax.inject.Singleton
 
 @Module
@@ -13,7 +14,10 @@ import javax.inject.Singleton
 class ApiModule {
 
     @Provides
-    @Singleton
-    fun providerApi(retrofit: Retrofit): ApiCurse =
+    fun providerApiCurse(retrofit: Retrofit): ApiCurse =
         retrofit.create(ApiCurse::class.java)
+
+    @Provides
+    fun providerApiCrypto(@CryptoScope retrofit: Retrofit): ApiCrypto =
+        retrofit.create(ApiCrypto::class.java)
 }

@@ -1,4 +1,4 @@
-package uz.gita.conversionuz.domain.network
+package uz.gita.conversionuz.domain.remote.network
 
 import retrofit2.Response
 import retrofit2.http.GET

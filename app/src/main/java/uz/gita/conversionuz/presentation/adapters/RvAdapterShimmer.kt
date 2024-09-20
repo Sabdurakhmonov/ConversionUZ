@@ -22,7 +22,6 @@ class RvAdapterShimmer:RecyclerView.Adapter<RvAdapterShimmer.ItemViewHolder>() {
         return ItemViewHolder(view)
 
     }
-
     override fun getItemCount(): Int {
         return 9
     }

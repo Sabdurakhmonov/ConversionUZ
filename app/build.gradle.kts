@@ -85,4 +85,15 @@ dependencies {
     implementation ("com.airbnb.android:lottie:6.5.2")
     //glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    //chart
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    //major
+    implementation ("com.github.majorkik:SparkLineLayout:1.0.1")
+    //room
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
+    //dialog
+    implementation ("com.github.gabriel-TheCode:AestheticDialogs:1.3.8")
 }
