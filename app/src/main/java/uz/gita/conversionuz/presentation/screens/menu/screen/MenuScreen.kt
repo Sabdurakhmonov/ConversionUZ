@@ -72,10 +72,10 @@ class MenuScreen : Fragment(R.layout.screen_menu) {
             binding.txCurrency.setTextColor(R.color.primary)
         }
         if (binding.btnSetting.isSelected) {
-            binding.icSet.setImageResource(R.drawable.ic_setting_sel)
+            binding.icSet.setImageResource(R.drawable.ic_info_sel)
             binding.txSetting.setTextColor(Color.BLUE)
         } else {
-            binding.icSet.setImageResource(R.drawable.ic_setting)
+            binding.icSet.setImageResource(R.drawable.ic_info)
             binding.txSetting.setTextColor(R.color.primary)
         }
         if (binding.btnLiked.isSelected) {

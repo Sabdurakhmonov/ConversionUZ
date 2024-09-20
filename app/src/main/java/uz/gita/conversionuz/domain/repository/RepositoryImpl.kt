@@ -1,6 +1,5 @@
 package uz.gita.conversionuz.domain.repository
 
-import android.util.Log
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +10,6 @@ import uz.gita.conversionuz.data.response.ApiResponse
 import uz.gita.conversionuz.data.response.ErrorMessage
 import uz.gita.conversionuz.data.ui_data.SavedData
 import uz.gita.conversionuz.data.ui_data.UIData
-import uz.gita.conversionuz.data.ui_data.UiData
 import uz.gita.conversionuz.domain.remote.local.AppDao
 import uz.gita.conversionuz.domain.remote.network.ApiCrypto
 import uz.gita.conversionuz.domain.remote.network.ApiCurse
@@ -85,7 +83,6 @@ class RepositoryImpl @Inject constructor(
                 }
             }
         }
-        Log.d("AAA", "getAlldata: ${list.size}")
         emit(Result.success(list))
     }.catch { emit(Result.failure(it)) }.flowOn(Dispatchers.IO)
 
@@ -100,7 +97,8 @@ class RepositoryImpl @Inject constructor(
         Result.success(Unit)
     }.catch { emit(Result.failure(it)) }.flowOn(Dispatchers.IO)
 
-    override fun deleteData(data: SavedData) {
+    override fun deleteData(data: SavedData): Flow<Result<Unit>> = flow{
         dao.deleteData(data)
-    }
+        emit(Result.success(Unit))
+    }.catch { emit(Result.failure(it)) }.flowOn(Dispatchers.IO)
 }

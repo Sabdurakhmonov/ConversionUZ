@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
@@ -13,6 +14,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.thecode.aestheticdialogs.AestheticDialog
+import com.thecode.aestheticdialogs.DialogAnimation
+import com.thecode.aestheticdialogs.DialogStyle
+import com.thecode.aestheticdialogs.DialogType
+import com.thecode.aestheticdialogs.OnDialogClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
@@ -59,7 +65,31 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
             create()
         }
         binding.btnClear.setOnClickListener {
-            viewModel.clickClearBtn()
+            AestheticDialog.Builder( requireActivity(), DialogStyle.FLAT, DialogType.INFO)
+                .setTitle("Delete")
+                .setMessage("Hamma saqlangan valyuta kurlani o'chirmoqchimiz?")
+                .setDarkMode(false)
+                .setGravity(Gravity.CENTER)
+                .setAnimation(DialogAnimation.SHRINK)
+                .setOnClickListener(object : OnDialogClickListener {
+                    override fun onClick(dialog: AestheticDialog.Builder) {
+                        dialog.dismiss()
+                        if(tab==0){
+                            viewModel.clearAllCurrency()
+                            currencyAdapter.submitList(emptyList())
+                            currencyAdapter.notifyDataSetChanged()
+                            binding.lotteAnime.isInvisible = false
+                            binding.btnClear.isInvisible = true
+                        }else{
+                            viewModel.clearAllCrypto()
+                            cryptoAdapter.submitList(emptyList())
+                            cryptoAdapter.notifyDataSetChanged()
+                            binding.lotteAnime.isInvisible = false
+                            binding.btnClear.isInvisible = true
+                        }
+                    }
+                })
+                .show()
         }
     }
 
@@ -83,6 +113,9 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
                         lifecycleScope.launch {
                             itemClickCurrency.emit(data)
                         }
+                    }
+                    currencyAdapter.onLongClickListener {data->
+                        viewModel.deleteCurrency(data)
                     }
                     if (it.isNotEmpty()) {
                         binding.btnClear.isInvisible = false
@@ -112,6 +145,9 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
                         lifecycleScope.launch {
                             itemClickCrypto.emit(data)
                         }
+                    }
+                    cryptoAdapter.onLongClickListener {data->
+                        viewModel.deleteCrypto(data)
                     }
                     if (it.isNotEmpty()) {
                         binding.btnClear.isInvisible = false

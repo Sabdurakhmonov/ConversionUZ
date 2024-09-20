@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/text_size_title_activity"
+    android:paddingBottom="40dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -188,14 +190,14 @@
                     android:id="@+id/ic_set"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_setting" />
+                    android:src="@drawable/ic_info" />
 
                 <TextView
                     android:id="@+id/tx_setting"
                     android:textColor="@color/primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="settings" />
+                    android:text="info" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

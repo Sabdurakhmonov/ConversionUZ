@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Conversion UZ</string>
+    <string name="info">Ushbu dastur Gita dasturchilar akademiyasida boobcamp-8 kursida davomida
+        o\'tilgan mavzular asosida qilingan bu dasturda siz valyuta kurslari va crypto valyutalar
+        kurslarini live eshitib turishimgiz mumkin bu sizga qulay va tez foydalanishizgiz uchun qilindi
+    </string>
+    <string name="gita"><u>Gita dasturchilar akademiyasi</u></string>
+    <string name="developer">developer:<u>Abdurahmonov Sardorbek</u></string>
 </resources>

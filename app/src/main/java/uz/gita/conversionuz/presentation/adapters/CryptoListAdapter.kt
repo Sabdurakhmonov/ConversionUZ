@@ -18,6 +18,10 @@ class CryptoListAdapter : ListAdapter<UIData, CryptoListAdapter.RVViewHolder>(Us
     fun onClickListener(block: (UIData) -> Unit) {
         listener = block
     }
+    private var listener1: ((UIData) -> Unit)? = null
+    fun onLongClickListener(block: (UIData) -> Unit) {
+        listener1 = block
+    }
 
     object UserDiffUtil : DiffUtil.ItemCallback<UIData>() {
         override fun areItemsTheSame(oldItem: UIData, newItem: UIData): Boolean {
@@ -80,6 +84,10 @@ class CryptoListAdapter : ListAdapter<UIData, CryptoListAdapter.RVViewHolder>(Us
         init {
             itemView.setOnClickListener {
                 listener?.invoke(currentList[adapterPosition])
+            }
+            itemView.setOnLongClickListener {
+                listener1?.invoke(currentList[adapterPosition])
+                false
             }
         }
     }

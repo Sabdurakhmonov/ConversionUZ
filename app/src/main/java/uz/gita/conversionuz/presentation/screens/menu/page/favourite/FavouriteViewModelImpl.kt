@@ -1,16 +1,15 @@
 package uz.gita.conversionuz.presentation.screens.menu.page.favourite
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 import uz.gita.conversionuz.data.response.ApiResponse
+import uz.gita.conversionuz.data.ui_data.SavedData
 import uz.gita.conversionuz.data.ui_data.UIData
-import uz.gita.conversionuz.data.ui_data.UiData
 import uz.gita.conversionuz.domain.repository.Repository
 import javax.inject.Inject
 
@@ -46,7 +45,19 @@ class FavouriteViewModelImpl @Inject constructor(
         }
     }
 
-    override fun clickClearBtn() {
+    override fun clearAllCurrency() {
+        repository.deleteAll("currency").launchIn(viewModelScope)
+    }
 
+    override fun clearAllCrypto() {
+        repository.deleteAll("crypto").launchIn(viewModelScope)
+    }
+
+    override fun deleteCurrency(data: ApiResponse.CursResponse) {
+        repository.deleteData(SavedData(data.id,"currency")).launchIn(viewModelScope)
+    }
+
+    override fun deleteCrypto(data: UIData) {
+        repository.deleteData(SavedData(data.id.toInt(),"crypto")).launchIn(viewModelScope)
     }
 }

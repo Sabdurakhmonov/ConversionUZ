@@ -1,6 +1,10 @@
 package uz.gita.conversionuz.presentation.screens
 
+import android.os.Build
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navigationHandler:AppNavigationHandler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         val navController = findViewById<FragmentContainerView>(R.id.nav_host_fragment)
@@ -26,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         navigationHandler.navigationStack.onEach {
             it(navController)
         }.launchIn(lifecycleScope)
-
 
     }
 }

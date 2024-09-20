@@ -4,7 +4,6 @@ import kotlinx.coroutines.flow.Flow
 import uz.gita.conversionuz.data.response.ApiResponse
 import uz.gita.conversionuz.data.ui_data.SavedData
 import uz.gita.conversionuz.data.ui_data.UIData
-import uz.gita.conversionuz.data.ui_data.UiData
 
 
 interface Repository {
@@ -14,5 +13,5 @@ interface Repository {
     fun getAllLocalCurrency():Flow<Result<List<ApiResponse.CursResponse>>>
     fun addData(data: SavedData):Flow<Result<Unit>>
     fun deleteAll(type: String):Flow<Result<Unit>>
-    fun deleteData(data: SavedData)
+    fun deleteData(data: SavedData):Flow<Result<Unit>>
 }

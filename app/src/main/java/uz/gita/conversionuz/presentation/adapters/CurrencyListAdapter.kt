@@ -1,6 +1,7 @@
 package uz.gita.conversionuz.presentation.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -17,8 +18,12 @@ import uz.gita.conversionuz.databinding.ItemConversionBinding
 class CurrencyListAdapter :
     ListAdapter<ApiResponse.CursResponse, CurrencyListAdapter.RVViewHolder>(UserDiffUtil) {
     private var listener: ((ApiResponse.CursResponse) -> Unit)? = null
+    private var listener1: ((ApiResponse.CursResponse) -> Unit)? = null
     fun onClickListener(block:(ApiResponse.CursResponse)->Unit){
         listener = block
+    }
+    fun onLongClickListener(block:(ApiResponse.CursResponse)->Unit){
+        listener1 = block
     }
 
     object UserDiffUtil : DiffUtil.ItemCallback<ApiResponse.CursResponse>() {
@@ -71,6 +76,11 @@ class CurrencyListAdapter :
         init {
             itemView.setOnClickListener {
                 listener?.invoke(currentList[adapterPosition])
+            }
+            itemView.setOnLongClickListener {
+                Log.d("BBB", "long click: ")
+                listener1?.invoke(currentList[adapterPosition])
+                false
             }
         }
     }

@@ -11,5 +11,8 @@ interface FavouriteViewModel {
     val dialog:Flow<Unit>
     fun getSavedCurrency()
     fun getSavedCrypto()
-    fun clickClearBtn()
+    fun clearAllCurrency()
+    fun clearAllCrypto()
+    fun deleteCurrency(data: ApiResponse.CursResponse)
+    fun deleteCrypto(data:UIData)
 }
