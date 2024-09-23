@@ -51,30 +51,6 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
         binding.rvAdapter.adapter = currencyAdapter
         binding.rvAdapter.layoutManager = LinearLayoutManager(requireContext())
         init()
-//
-//        dialog = AestheticDialog.Builder( requireActivity(), DialogStyle.DRAKE, DialogType.ERROR)
-//            .setTitle("Delete")
-//            .setMessage("Hamma saqlangan valyuta kurlani o'chirmoqchimiz?")
-//            .setDarkMode(false)
-//            .setGravity(Gravity.CENTER)
-//            .setAnimation(DialogAnimation.SHRINK)
-//            .setOnClickListener(object : OnDialogClickListener {
-//                override fun onClick(dialog: AestheticDialog.Builder) {
-//
-//                }
-//            })
-//        viewModel.network.onEach {
-//            if(!it){
-//                binding.rvAdapter.isInvisible = false
-//                dialog.show()
-//            }else{
-//                if(::dialog.isInitialized){
-//                    binding.rvAdapter.isInvisible = false
-//                    dialog.dismiss()
-//                    init()
-//                }
-//            }
-//        }.launchIn(lifecycleScope)
     }
 
 
@@ -200,7 +176,7 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
     @SuppressLint("ResourceAsColor")
     fun anime1() {
         binding.txCurrency.setTextColor(Color.BLUE)
-        binding.txCrypto.setTextColor(R.color.primary)
+        binding.txCrypto.setTextColor(Color.DKGRAY)
         if (!checkTab) {
             binding.selected.animate()
                 .translationX(0f)
@@ -213,7 +189,7 @@ class FavouritePage : Fragment(R.layout.page_favourite) {
     @SuppressLint("ResourceAsColor")
     fun anime2() {
         binding.txCrypto.setTextColor(Color.BLUE)
-        binding.txCurrency.setTextColor(R.color.primary)
+        binding.txCurrency.setTextColor(Color.DKGRAY)
         val xTab = binding.selected.x
         val xSel = binding.btnAllCrypto.x
         if (checkTab) {

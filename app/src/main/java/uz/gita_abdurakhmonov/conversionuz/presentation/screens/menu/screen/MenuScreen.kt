@@ -63,28 +63,28 @@ class MenuScreen : Fragment(R.layout.screen_menu) {
             binding.txCrypto.setTextColor(Color.BLUE)
         } else {
             binding.icCry.setImageResource(R.drawable.ic_bitcoin)
-            binding.txCrypto.setTextColor(R.color.primary)
+            binding.txCrypto.setTextColor(Color.DKGRAY)
         }
         if (binding.btnCurrency.isSelected) {
             binding.icCur.setImageResource(R.drawable.ic_currency_sel)
             binding.txCurrency.setTextColor(Color.BLUE)
         } else {
             binding.icCur.setImageResource(R.drawable.ic_currency)
-            binding.txCurrency.setTextColor(R.color.primary)
+            binding.txCurrency.setTextColor(Color.DKGRAY)
         }
         if (binding.btnSetting.isSelected) {
             binding.icSet.setImageResource(R.drawable.ic_info_sel)
             binding.txSetting.setTextColor(Color.BLUE)
         } else {
             binding.icSet.setImageResource(R.drawable.ic_info)
-            binding.txSetting.setTextColor(R.color.primary)
+            binding.txSetting.setTextColor(Color.DKGRAY)
         }
         if (binding.btnLiked.isSelected) {
             binding.icLiked.setImageResource(R.drawable.ic_favourite_sel)
             binding.txLiked.setTextColor(Color.BLUE)
         } else {
             binding.icLiked.setImageResource(R.drawable.ic_favourite)
-            binding.txLiked.setTextColor(R.color.primary)
+            binding.txLiked.setTextColor(Color.DKGRAY)
         }
     }
 
