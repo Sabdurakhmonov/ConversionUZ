@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/app_navigation"
-    app:startDestination="@id/menuScreen">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/splashScreen"
-        android:name="uz.gita.conversionuz.presentation.screens.splash.SplashScreen"
-        android:label="SplashScreen" />
+        android:name="uz.gita_abdurakhmonov.conversionuz.presentation.screens.splash.SplashScreen"
+        android:label="SplashScreen" >
+        <action
+            android:id="@+id/action_splashScreen_to_menuScreen"
+            app:destination="@id/menuScreen"
+            app:popUpTo="@id/app_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/infoScreen"
-        android:name="uz.gita.conversionuz.presentation.screens.info.InfoScreen"
-        android:label="InfoScreen" >
+        android:name="uz.gita_abdurakhmonov.conversionuz.presentation.screens.info.InfoScreen"
+        android:label="InfoScreen">
         <argument
             android:name="data"
-            app:argType="uz.gita.conversionuz.data.ui_data.UiData" />
+            app:argType="uz.gita_abdurakhmonov.conversionuz.data.ui_data.UiData" />
         <action
             android:id="@+id/action_infoScreen_self"
             app:destination="@id/infoScreen" />
     </fragment>
     <fragment
         android:id="@+id/menuScreen"
-        android:name="uz.gita.conversionuz.presentation.screens.menu.screen.MenuScreen"
-        android:label="MenuScreen" >
+        android:name="uz.gita_abdurakhmonov.conversionuz.presentation.screens.menu.screen.MenuScreen"
+        android:label="MenuScreen">
         <action
             android:id="@+id/action_menuScreen_to_infoScreen"
             app:destination="@id/infoScreen" />

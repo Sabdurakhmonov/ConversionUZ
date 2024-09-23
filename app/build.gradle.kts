@@ -7,15 +7,15 @@ plugins {
 }
 
 android {
-    namespace = "uz.gita.conversionuz"
+    namespace = "uz.gita_abdurakhmonov.conversionuz"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "uz.gita.conversionuz"
+        applicationId = "uz.gita_abdurakhmonov.conversionuz"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -96,4 +96,7 @@ dependencies {
 
     //dialog
     implementation ("com.github.gabriel-TheCode:AestheticDialogs:1.3.8")
+
+    //splash
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }

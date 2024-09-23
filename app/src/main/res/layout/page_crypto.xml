@@ -133,15 +133,29 @@
         android:id="@+id/lotte_anime"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/money"
+        app:lottie_rawRes="@raw/free"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
+    <TextView
+        android:id="@+id/tx_empty"
+        app:layout_constraintTop_toBottomOf="@+id/lotte_anime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#c5c8ce"
+        android:textSize="20sp"
+        android:text="Crypto currency not found!"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        android:fontFamily="@font/doppio_one"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
