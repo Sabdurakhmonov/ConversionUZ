@@ -30,8 +30,8 @@ class RepositoryImpl @Inject constructor(
         val result = apiCurse.getAll()
         if (result.isSuccessful && result.body() != null) {
             currency.clear()
-            currency.addAll(result.body()!!)
-            emit(Result.success(result.body()!!))
+            currency.addAll(result.body()!!.filter { it.ccy!="ILS" })
+            emit(Result.success(currency))
         } else if (result.errorBody() != null) {
             val error: ErrorMessage.Message =
                 gson.fromJson(result.errorBody()!!.string(), ErrorMessage.Message::class.java)
