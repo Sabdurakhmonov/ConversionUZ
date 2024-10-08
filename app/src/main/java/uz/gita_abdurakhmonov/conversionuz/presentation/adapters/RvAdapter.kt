@@ -100,7 +100,6 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.ItemViewHolder>() {
                             "xrp" -> {
                                 "https://cryptologos.cc/logos/${data.symbol.lowercase()}-${data.symbol.lowercase()}-logo.png?v=034"
                             }
-
                             "steth" -> "https://cryptologos.cc/logos/steth-steth-logo.png?v=035"
                             "dot" -> "https://cryptologos.cc/logos/${data.namEid}-new-${data.symbol.lowercase()}-logo.png?v=034"
                             "op" -> "https://cryptologos.cc/logos/optimism-ethereum-op-logo.png?v=035"

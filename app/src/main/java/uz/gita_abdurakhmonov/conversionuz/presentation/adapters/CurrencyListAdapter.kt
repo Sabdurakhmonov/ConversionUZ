@@ -50,7 +50,6 @@ class CurrencyListAdapter :
         }
     }
 
-
     inner class RVViewHolder(private val binding: ItemConversionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
